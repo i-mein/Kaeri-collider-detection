@@ -1,2 +1,2 @@
-# Collision-detection-AI
-DACON Competition | Collision Detection AI using Vibration data
+# Collision-detection-AI using Vibration data
+DACON Competition | Korea Atomic Energy Research Institute 
