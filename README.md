@@ -481,13 +481,5 @@ history = model.fit(
 )
 ```
 
-Maybe this also 
-
-[https://www.wandb.com/articles/hyperparameter-tuning-as-easy-as-1-2-3](https://www.wandb.com/articles/hyperparameter-tuning-as-easy-as-1-2-3)
-
- 
-
-
-
 
 
