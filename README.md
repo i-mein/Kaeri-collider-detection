@@ -31,6 +31,10 @@ train_y = pd.read_csv(os.path.join(root_dir, 'train_target.csv'))
 test_x = pd.read_csv(os.path.join(root_dir, 'test_features.csv'))
 ```
 
+### Evaluation Metric
+
+SMAPE  
+
 ## 2: Data Cleansing & Pre-Processing
 
 ## 3: Exploratory Data Analysis
@@ -380,55 +384,13 @@ def kaeri_metric(y_true,  y_pred):
 ## 6. Conclusion & Discussion
 
 To my best of knowledge a single model with proper features and tuned parameters can outperform a very complex models with complex features.
-
-Next steps (that I didn't have time to try during the submission time)
-
-- extract FFT features from various bands & from correlations between them
-- Mel spectrograms, MFCC features from spectra
-- Kalman filtering
-- FE + Feature selection
-
-    To select best features amongst the pool of features
-
-- Hyperparameter tuning (concentrate on a single model and tune its parameters using W&B)
-
  
-
-# Discussions
-
-# Kernels
-
-[SHIFTED-RFC Pipeline](https://www.kaggle.com/sggpls/shifted-rfc-pipeline)
-
-# Resources
-
-[basveeling/wavenet](https://github.com/basveeling/wavenet)
-
-[tf.data: Build TensorFlow input pipelines | TensorFlow Core](https://www.tensorflow.org/guide/data)
-
-[](https://arxiv.org/pdf/1807.03247.pdf)
-
-# Exploring The Dataset
-
-The First Important thing i found that there was null values in the dataset. By running `dataset.isnull().sum()`
-
-- There is not that much NaN values
-
-# Data Visualisations
-
-Data Visualisations is always a fun part, it gives us a LOT of insights about the dataset. Soo why not to do this
-
-# Evaluation Metric
-
-SMAPE  
-
-
-# Next steps (that I didn't have time to try during the submission time)
+### Next steps (that I didn't have time to try during the submission time)
 
 - extract FFT features from various bands & from correlations between them
 - Mel spectrograms, MFCC features from spectra
 - Kalman filtering
-- FE + Feature Selection
+- FE + Feature Selection (To select best features amongst the pool of features)
 - Hyperparameter tuning (Weights & Biases)
 
 
