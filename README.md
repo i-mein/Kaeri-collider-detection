@@ -39,6 +39,8 @@ SMAPE
 
 ## 3: Exploratory Data Analysis
 
+to be cont.
+
 ## 4: Feature Engineering & Initial Modeling
 
 - FE lags on various windows (per sensor) —> 24 additional features + 5 raw = `29 features with shape: (-1, 375, 29, 1)`
@@ -46,7 +48,8 @@ SMAPE
     - mean, median, min, max, std, percentiles, skew
     - min/max, norm, mean absolute change, absolute max/min, max to min, absolute average
 
-![DACON%20Kaeri%20Readme%20d864e9db0f994d518c14093a77d9474c/Untitled.png](DACON%20Kaeri%20Readme%20d864e9db0f994d518c14093a77d9474c/Untitled.png)
+![](Untitled.png)
+
 
 Tried also but didn't work: 
 
@@ -75,78 +78,6 @@ batch_normalization dense layers = False
 dense units = [512, 128, 16]
 ```
 
-Summary:
-
-```
-Model 1 [Keras]: 
-_________________________________________________________________
-Layer (type)            Output Shape                    Param #
-=================================================================
-input_26 (InputLayer) [(None, 375, 5, 1)]                    0
-_________________________________________________________________
-conv2d_150 (Conv2D)   (None, 375, 5, 32)                   192
-_________________________________________________________________
-batch_normalization_210 (Bat (None, 375, 5, 32)            128
-_________________________________________________________________
-max_pooling2d_120 (MaxPoolin (None, 187, 5, 32)              0
-_________________________________________________________________
-conv2d_151 (Conv2D) (None, 187, 5, 64)                   10304
-_________________________________________________________________
-batch_normalization_211 (Bat (None, 187, 5, 64) 256
-_________________________________________________________________
-max_pooling2d_121 (MaxPoolin (None, 93, 5, 64) 0
-_________________________________________________________________
-conv2d_152 (Conv2D) (None, 93, 5, 128) 41088
-_________________________________________________________________
-batch_normalization_212 (Bat (None, 93, 5, 128) 512
-_________________________________________________________________
-max_pooling2d_122 (MaxPoolin (None, 46, 5, 128) 0
-_________________________________________________________________
-conv2d_153 (Conv2D) (None, 46, 5, 256) 164096
-_________________________________________________________________
-batch_normalization_213 (Bat (None, 46, 5, 256) 1024
-_________________________________________________________________
-max_pooling2d_123 (MaxPoolin (None, 23, 5, 256) 0
-_________________________________________________________________
-conv2d_154 (Conv2D) (None, 23, 5, 512) 655872
-_________________________________________________________________
-batch_normalization_214 (Bat (None, 23, 5, 512) 2048
-_________________________________________________________________
-max_pooling2d_124 (MaxPoolin (None, 11, 5, 512) 0
-_________________________________________________________________
-conv2d_155 (Conv2D) (None, 11, 5, 1024) 2622464
-_________________________________________________________________
-batch_normalization_215 (Bat (None, 11, 5, 1024) 4096
-_________________________________________________________________
-max_pooling2d_125 (MaxPoolin (None, 5, 5, 1024) 0
-_________________________________________________________________
-flatten_24 (Flatten) (None, 25600) 0
-_________________________________________________________________
-dense_99 (Dense) (None, 512) 13107712
-_________________________________________________________________
-elu_194 (ELU) (None, 512) 0
-_________________________________________________________________
-dropout_74 (Dropout) (None, 512) 0
-_________________________________________________________________
-dense_100 (Dense) (None, 128) 65664
-_________________________________________________________________
-elu_195 (ELU) (None, 128) 0
-_________________________________________________________________
-dropout_75 (Dropout) (None, 128) 0
-_________________________________________________________________
-dense_101 (Dense) (None, 16) 2064
-_________________________________________________________________
-elu_196 (ELU) (None, 16) 0
-_________________________________________________________________
-dropout_76 (Dropout) (None, 16) 0
-_________________________________________________________________
-dense_102 (Dense) (None, 4) 68
-=================================================================
-Total params: 16,677,588
-Trainable params: 16,673,556
-Non-trainable params: 4,032
-_________________________________________________________________
-```
 
 ### Training Scheme (Model 1)
 
@@ -225,110 +156,6 @@ dense units = [512, 256]
 fc dense units (after concat) = [1024, 512, 128]
 ```
 
-Summary: 
-
-```
-Model 3 [Keras]:
-__________________________________________________________________________________________________
-Layer (type) Output Shape Param # Connected to
-==================================================================================================
-input_6 (InputLayer) [(None, 375, 29, 1)] 0
-__________________________________________________________________________________________________
-conv2d_18 (Conv2D) (None, 371, 29, 32) 192 input_6[0][0]
-__________________________________________________________________________________________________
-batch_normalization_21 (BatchNo (None, 371, 29, 32) 128 conv2d_18[0][0]
-__________________________________________________________________________________________________
-elu_21 (ELU) (None, 371, 29, 32) 0 batch_normalization_21[0][0]
-__________________________________________________________________________________________________
-max_pooling2d_18 (MaxPooling2D) (None, 185, 29, 32) 0 elu_21[0][0]
-__________________________________________________________________________________________________
-conv2d_19 (Conv2D) (None, 181, 29, 64) 10304 max_pooling2d_18[0][0]
-__________________________________________________________________________________________________
-batch_normalization_22 (BatchNo (None, 181, 29, 64) 256 conv2d_19[0][0]
-__________________________________________________________________________________________________
-elu_22 (ELU) (None, 181, 29, 64) 0 batch_normalization_22[0][0]
-__________________________________________________________________________________________________
-max_pooling2d_19 (MaxPooling2D) (None, 90, 29, 64) 0 elu_22[0][0]
-__________________________________________________________________________________________________
-conv2d_20 (Conv2D) (None, 86, 29, 128) 41088 max_pooling2d_19[0][0]
-__________________________________________________________________________________________________
-batch_normalization_23 (BatchNo (None, 86, 29, 128) 512 conv2d_20[0][0]
-__________________________________________________________________________________________________
-elu_23 (ELU) (None, 86, 29, 128) 0 batch_normalization_23[0][0]
-__________________________________________________________________________________________________
-max_pooling2d_20 (MaxPooling2D) (None, 43, 29, 128) 0 elu_23[0][0]
-__________________________________________________________________________________________________
-conv2d_21 (Conv2D) (None, 39, 29, 256) 164096 max_pooling2d_20[0][0]
-__________________________________________________________________________________________________
-batch_normalization_24 (BatchNo (None, 39, 29, 256) 1024 conv2d_21[0][0]
-__________________________________________________________________________________________________
-elu_24 (ELU) (None, 39, 29, 256) 0 batch_normalization_24[0][0]
-__________________________________________________________________________________________________
-max_pooling2d_21 (MaxPooling2D) (None, 19, 29, 256) 0 elu_24[0][0]
-__________________________________________________________________________________________________
-conv2d_22 (Conv2D) (None, 15, 29, 512) 655872 max_pooling2d_21[0][0]
-__________________________________________________________________________________________________
-batch_normalization_25 (BatchNo (None, 15, 29, 512) 2048 conv2d_22[0][0]
-__________________________________________________________________________________________________
-elu_25 (ELU) (None, 15, 29, 512) 0 batch_normalization_25[0][0]
-__________________________________________________________________________________________________
-max_pooling2d_22 (MaxPooling2D) (None, 7, 29, 512) 0 elu_25[0][0]
-__________________________________________________________________________________________________
-conv2d_23 (Conv2D) (None, 3, 29, 1024) 2622464 max_pooling2d_22[0][0]
-__________________________________________________________________________________________________
-input_7 (InputLayer) [(None, 68)] 0
-__________________________________________________________________________________________________
-batch_normalization_26 (BatchNo (None, 3, 29, 1024) 4096 conv2d_23[0][0]
-__________________________________________________________________________________________________
-dense_8 (Dense) (None, 512) 35328 input_7[0][0]
-__________________________________________________________________________________________________
-elu_26 (ELU) (None, 3, 29, 1024) 0 batch_normalization_26[0][0]
-__________________________________________________________________________________________________
-dropout_7 (Dropout) (None, 512) 0 dense_8[0][0]
-__________________________________________________________________________________________________
-max_pooling2d_23 (MaxPooling2D) (None, 1, 29, 1024) 0 elu_26[0][0]
-__________________________________________________________________________________________________
-dense_9 (Dense) (None, 256) 131328 dropout_7[0][0]
-__________________________________________________________________________________________________
-flatten_2 (Flatten) (None, 29696) 0 max_pooling2d_23[0][0]
-__________________________________________________________________________________________________
-dropout_8 (Dropout) (None, 256) 0 dense_9[0][0]
-__________________________________________________________________________________________________
-concatenate_2 (Concatenate) (None, 29952) 0 flatten_2[0][0] dropout_8[0][0]
-__________________________________________________________________________________________________
-flatten_3 (Flatten) (None, 29952) 0 concatenate_2[0][0]
-__________________________________________________________________________________________________
-dense_10 (Dense) (None, 1024) 30671872 flatten_3[0][0]
-__________________________________________________________________________________________________
-batch_normalization_27 (BatchNo (None, 1024) 4096 dense_10[0][0]
-__________________________________________________________________________________________________
-elu_27 (ELU) (None, 1024) 0 batch_normalization_27[0][0]
-__________________________________________________________________________________________________
-dropout_9 (Dropout) (None, 1024) 0 elu_27[0][0]
-__________________________________________________________________________________________________
-dense_11 (Dense) (None, 512) 524800 dropout_9[0][0]
-__________________________________________________________________________________________________
-batch_normalization_28 (BatchNo (None, 512) 2048 dense_11[0][0]
-__________________________________________________________________________________________________
-elu_28 (ELU) (None, 512) 0 batch_normalization_28[0][0]
-__________________________________________________________________________________________________
-dropout_10 (Dropout) (None, 512) 0 elu_28[0][0]
-__________________________________________________________________________________________________
-dense_12 (Dense) (None, 128) 65664 dropout_10[0][0]
-__________________________________________________________________________________________________
-batch_normalization_29 (BatchNo (None, 128) 512 dense_12[0][0]
-__________________________________________________________________________________________________
-elu_29 (ELU) (None, 128) 0 batch_normalization_29[0][0]
-__________________________________________________________________________________________________
-dropout_11 (Dropout) (None, 128) 0 elu_29[0][0]
-__________________________________________________________________________________________________
-dense_13 (Dense) (None, 4) 516 dropout_11[0][0]
-==================================================================================================
-Total params: 34,938,244
-Trainable params: 34,930,884
-Non-trainable params: 7,360
-__________________________________________________________________________________________________
-```
 
 ### Training scheme (Model 3)
 
@@ -383,8 +210,15 @@ def kaeri_metric(y_true,  y_pred):
 
 ## 6. Conclusion & Discussion
 
-To my best of knowledge a single model with proper features and tuned parameters can outperform a very complex models with complex features.
- 
+My intention here was to experiment with different frameworks (TF, Pytorch) and make comparisons on the model performance, pipelines etc
+
+I was experimenting with many architectures but at the end I didn't have time to focus on a single one and tune it properly and decide it to 
+spend the final days to ensembling. Hence, I picked the best 3 models from the 'experimental pool' to boost my LB scores.
+
+However, to my best of knowledge a single model with proper features and tuned parameters can outperform very complex models with complex features. 
+Next steps will be towards that direction. 
+
+
 ### Next steps (that I didn't have time to try during the submission time)
 
 - extract FFT features from various bands & from correlations between them
@@ -425,7 +259,6 @@ defaults=dict(
     )
 
 # Initialize a new wandb run and pass in the config object
-# wandb.init(anonymous='allow', project="kaggle", config=defaults)
 wandb.init(project="visualize-models", config=defaults, name="neural_network")
 config = wandb.config 
 ```
@@ -443,41 +276,27 @@ with strategy.scope():
         L.GlobalAveragePooling2D(),
         L.Dense(1024, activation = 'relu'), 
         L.Dropout(config.dropout), 
-        L.Dense(512, activation= 'relu'), 
-        L.Dropout(config.dropout), 
-        L.Dense(256, activation='relu'), 
-        L.Dropout(config.dropout), 
-        L.Dense(128, activation='relu'), 
-        L.Dropout(config.dropout), 
-        L.Dense(1, activation='sigmoid')
+        ....
     ])
 ```
 
 ```python
 model.compile(
-    optimizer=tf.keras.optimizers.Adam(
-    learning_rate=config.learn_rate,
-    beta_1=config.beta1,
-    beta_2=config.beta2,
-    epsilon=config.epsilon),
-    #loss = 'binary_crossentropy',
-    loss = tf.keras.losses.BinaryCrossentropy(label_smoothing = config.label_smooth),
-    metrics=['binary_crossentropy', 'accuracy']
-)
-model.summary()
+    optimizer=tf.keras.optimizers.Adam(learning_rate=config.learn_rate),
+    loss = 'binary_crossentropy',
+    metrics=['binary_crossentropy', 'accuracy'])
 ```
 
 5. Add the callback 
 
 ```python
-labels=["benign","malignant"]
 
 history = model.fit(
     get_training_dataset(), 
     epochs=EPOCHS, 
     validation_data=get_validation_dataset(),
     steps_per_epoch=STEPS_PER_EPOCH,
-    callbacks=[WandbCallback(data_type="image", labels=labels)]
+    callbacks=[WandbCallback()]
 )
 ```
 
