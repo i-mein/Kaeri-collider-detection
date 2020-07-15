@@ -18,7 +18,7 @@ DACON Competition | Korea Atomic Energy Research Institute
 #### Submission date: 17/07/2020
 
 
-Update: a single file clean code with comments will be uploaded soon 
+Update: a single file with clean code + comments will be uploaded soon 
 
 ---
 
