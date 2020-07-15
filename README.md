@@ -11,7 +11,7 @@ DACON Competition | Korea Atomic Energy Research Institute
 
 #### User/Team name: IME
 
-#### LB score: 
+#### LB Position: 
     - Public: 4th 
     - Pvt: 7th 
 
@@ -31,6 +31,10 @@ train_y = pd.read_csv(os.path.join(root_dir, 'train_target.csv'))
 test_x = pd.read_csv(os.path.join(root_dir, 'test_features.csv'))
 ```
 
+```
+train_x.head()
+```
+
 ### Evaluation Metric
 
 SMAPE  
@@ -39,7 +43,7 @@ SMAPE
 
 ## 3: Exploratory Data Analysis
 
-to be cont.
+to be added soon
 
 ## 4: Feature Engineering & Initial Modeling
 
@@ -57,7 +61,6 @@ Tried also but didn't work:
 - FFT features
 - exponential weighted functions
 
-insert figure with features per model
 
 ## 5: Model Tuning & Evaluation
 
