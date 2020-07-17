@@ -3,6 +3,8 @@ DACON Competition | Korea Atomic Energy Research Institute
 
 ### Description:
 
+Collider Detection AI for early diagnosis of faults in Nuclear Power Plants using Vibration data (LB #7th)
+
 [https://dacon.io/competitions/official/235614/overview/](https://dacon.io/competitions/official/235614/overview/)
 
 ---
