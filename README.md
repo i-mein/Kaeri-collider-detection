@@ -12,10 +12,15 @@ DACON Competition | Korea Atomic Energy Research Institute
 If you wish to experiment with the models, download data from competition site and use either the main file (ensemble of 3 models) or experiment with specific models. The training schemes and architectures are described below.   
 
 `KAERI_source_code_IME.ipynb`: single file with whole code to train all 3 models and create the final submission file.  
+
 `KAERI CNN2d Keras xxx.ipynb`: TF_Keras training CNN2d model 
+
 `KAERI CNN2d Torch xxx.ipynb`: Pytorch training CNN2d model 
+
 `KAERI CNN2d-MLP Keras xxx.ipynb`: TF_Keras training CNN2d + MLP model concat (with sequence and tabular data)
+
 `KAERI ensemble.ipynb`: ensemble of 3 best models 
+
 
 ---
 
@@ -67,45 +72,8 @@ Tried also but didn't work:
 
 ## 5: Model Tuning & Evaluation
 
-### Model 1 [Keras]
 
-CNN2d, 1 channel with 6 layers + FC head with 3 Dense layers
-
-Parameters:
-
-```
-filters = [32, 32*2, 32*4, 32*8, 32*16, 32*32]
-kernel = (5,1) 
-activation = 'elu' 
-padding = 'same'
-dropout = 0.2
-batch_normalization conv layers = True
-batch_normalization dense layers = False
-dense units = [512, 128, 16]
-```
-
-
-### Training Scheme (Model 1)
-
-Optimizer: `Adam(LR=0.1) + SWA`  
-
-LR schedule: `Cyclic LR (exp)`
-
-Early stopping callback with patience 50
-
-Batch size = 256
-
-Train one model for Position (XY), one model for Mass (M) & one model for Velocity (V)
-
-Model 1-XY `validation loss = 0.0018968`
-
-Model 1-M `validation_loss=0.0005028`
-
-Model 1-V `validation loss=3.3e-05`
-
----
-
-### Model 2 [Pytorch]
+### Model 1 [Pytorch]
 
 CNN2d with 2 channels, 6 layers + FC head with 3 Dense layers
 
@@ -122,7 +90,7 @@ batch_normalization dense layers = False
 dense units = [512, 256, 128]
 ```
 
-### Training Scheme (Model 2)
+### Training Scheme (Model 1)
 
 Channel 1: `raw data + white Noise (mean=0, std=0.001)`
 
@@ -143,6 +111,49 @@ Model 1-M `validation_loss = 0.005548691534`
 Model 1-V `validation loss = 0.00179906`
 
 ---
+
+
+
+
+### Model 2 [Keras]
+
+CNN2d, 1 channel with 6 layers + FC head with 3 Dense layers
+
+Parameters:
+
+```
+filters = [32, 32*2, 32*4, 32*8, 32*16, 32*32]
+kernel = (5,1) 
+activation = 'elu' 
+padding = 'same'
+dropout = 0.2
+batch_normalization conv layers = True
+batch_normalization dense layers = False
+dense units = [512, 128, 16]
+```
+
+
+### Training Scheme (Model 2)
+
+Optimizer: `Adam(LR=0.1) + SWA`  
+
+LR schedule: `Cyclic LR (exp)`
+
+Early stopping callback with patience 50
+
+Batch size = 256
+
+Train one model for Position (XY), one model for Mass (M) & one model for Velocity (V)
+
+Model 1-XY `validation loss = 0.0018968`
+
+Model 1-M `validation_loss=0.0005028`
+
+Model 1-V `validation loss=3.3e-05`
+
+---
+
+
 
 ### Model 3 [Keras]
 
