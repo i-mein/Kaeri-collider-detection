@@ -5,6 +5,20 @@ DACON Competition | Korea Atomic Energy Research Institute
 
 [https://dacon.io/competitions/official/235614/overview/](https://dacon.io/competitions/official/235614/overview/)
 
+---
+
+### Files:
+
+If you wish to experiment with the models, download data from competition site and use either the main file (ensemble of 3 models) or experiment with specific models. The training schemes and architectures are described below.   
+
+`KAERI_source_code_IME.ipynb`: single file with whole code to train all 3 models and create the final submission file.  
+`KAERI CNN2d Keras xxx.ipynb`: TF_Keras training CNN2d model 
+`KAERI CNN2d Torch xxx.ipynb`: Pytorch training CNN2d model 
+`KAERI CNN2d-MLP Keras xxx.ipynb`: TF_Keras training CNN2d + MLP model concat (with sequence and tabular data)
+`KAERI ensemble.ipynb`: ensemble of 3 best models 
+
+---
+
 # Winning Solution documentation
 
 ---
@@ -14,33 +28,19 @@ DACON Competition | Korea Atomic Energy Research Institute
 #### LB Position: 
     - Public: 4th 
     - Pvt: 7th 
-
-#### Submission date: 17/07/2020
-
-
-Update: a single file with clean code + comments will be uploaded soon 
-
 ---
 
 ## 1: Library and Data
 
-Use of TF Keras, Pytorch, ....
+- 4 acceleration sensors 
+- ~0.0015 sec measurements with 25600 Hz sampling --> 375 points per measurement
+- 2800 collider ids in training set
+- 4 target variables: position (X,Y), mass (M) and velocity (V) of the collider
 
-Read the dataset
+- Use of TF Keras, Pytorch, scikit-learn, scipy and more
 
-```
-train_x = pd.read_csv(os.path.join(root_dir, 'train_features.csv'))
-train_y = pd.read_csv(os.path.join(root_dir, 'train_target.csv'))
-test_x = pd.read_csv(os.path.join(root_dir, 'test_features.csv'))
-```
+- Evaluation Metric: SMAPE  
 
-```
-train_x.head()
-```
-
-### Evaluation Metric
-
-SMAPE  
 
 ## 2: Data Cleansing & Pre-Processing
 
@@ -305,6 +305,5 @@ history = model.fit(
     callbacks=[WandbCallback()]
 )
 ```
-
 
 
