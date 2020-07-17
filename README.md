@@ -11,15 +11,11 @@ DACON Competition | Korea Atomic Energy Research Institute
 
 If you wish to experiment with the models, download data from competition site and use either the main file (ensemble of 3 models) or experiment with specific models. The training schemes and architectures are described below.   
 
-`KAERI_source_code_IME.ipynb`: single file with whole code to train all 3 models and create the final submission file.  
-
-`KAERI CNN2d Keras xxx.ipynb`: TF_Keras training CNN2d model 
-
-`KAERI CNN2d Torch xxx.ipynb`: Pytorch training CNN2d model 
-
-`KAERI CNN2d-MLP Keras xxx.ipynb`: TF_Keras training CNN2d + MLP model concat (with sequence and tabular data)
-
-`KAERI ensemble.ipynb`: ensemble of 3 best models 
+- `KAERI_source_code_IME.ipynb`: single file with whole code to train all 3 models and create the final submission file.  
+- `KAERI CNN2d Keras xxx.ipynb`: TF_Keras training CNN2d model 
+- `KAERI CNN2d Torch xxx.ipynb`: Pytorch training CNN2d model 
+- `KAERI CNN2d-MLP Keras xxx.ipynb`: TF_Keras training CNN2d + MLP model concat (with sequence and tabular data)
+- `KAERI ensemble.ipynb`: ensemble of 3 best models 
 
 
 ---
