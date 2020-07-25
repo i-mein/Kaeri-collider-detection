@@ -29,8 +29,8 @@ If you wish to experiment with the models, download data from competition site a
 #### User/Team name: IME
 
 #### LB Position: 
-    - Public: 4th 
-    - Pvt: 7th 
+    - Public: 4th  | LB: 0.0037xx 
+    - Pvt: 7th     | LB: 0.0042xx
 ---
 
 ## 1: Library and Data
